@@ -1,0 +1,353 @@
+[
+  {
+    "id": "one_sample_t",
+    "label": "One-sample t-test",
+    "whenToUse": "Compare one sample mean to a known/reference value when the outcome is approximately normal.",
+    "assumptions": [
+      "Continuous outcome",
+      "Independent observations",
+      "Approximate normality in sample or large sample size"
+    ],
+    "whatToReport": [
+      "Sample mean and reference value",
+      "t statistic, degrees of freedom, and p-value",
+      "Confidence interval for mean difference",
+      "Effect size (e.g., Cohen's d)"
+    ],
+    "resultsTemplate": "A one-sample t-test showed that the mean [outcome] was [not] different from [reference], t(df) = X.XX, p = .XXX, 95% CI [LL, UL].",
+    "notes": ["Use Wilcoxon signed-rank if strong non-normality is present."]
+  },
+  {
+    "id": "wilcoxon_signed_rank",
+    "label": "Wilcoxon signed-rank test",
+    "whenToUse": "Compare paired measurements or one-sample median difference when normality is not met.",
+    "assumptions": [
+      "Paired/related data or one-sample difference scores",
+      "Ordinal or continuous outcome",
+      "Symmetry of difference distribution is preferred"
+    ],
+    "whatToReport": [
+      "Median and IQR (or paired median difference)",
+      "W statistic (or V/Z depending on software) and p-value",
+      "Effect size (e.g., rank-biserial correlation)"
+    ],
+    "resultsTemplate": "A Wilcoxon signed-rank test indicated [no] median difference in [outcome], W = X, p = .XXX.",
+    "notes": ["For one-sample use, differences are tested against zero/reference median."]
+  },
+  {
+    "id": "independent_t",
+    "label": "Independent t-test",
+    "whenToUse": "Compare means between two independent groups when normality is reasonable and variances are similar.",
+    "assumptions": [
+      "Continuous outcome",
+      "Two independent groups",
+      "Approximate normality within groups",
+      "Homogeneity of variance"
+    ],
+    "whatToReport": [
+      "Group means and SDs",
+      "t statistic, degrees of freedom, and p-value",
+      "Confidence interval for mean difference",
+      "Effect size (e.g., Cohen's d)"
+    ],
+    "resultsTemplate": "An independent t-test found that [Group A] had [higher/lower/similar] [outcome] than [Group B], t(df) = X.XX, p = .XXX, 95% CI [LL, UL].",
+    "notes": []
+  },
+  {
+    "id": "welch_t",
+    "label": "Welch t-test",
+    "whenToUse": "Compare means between two independent groups when variances are unequal.",
+    "assumptions": [
+      "Continuous outcome",
+      "Two independent groups",
+      "Approximate normality within groups"
+    ],
+    "whatToReport": [
+      "Group means and SDs",
+      "Welch t statistic, adjusted df, and p-value",
+      "Confidence interval for mean difference"
+    ],
+    "resultsTemplate": "A Welch t-test showed [Group A] and [Group B] differed [not] in [outcome], t(df_welch) = X.XX, p = .XXX.",
+    "notes": ["Preferred over classic t-test when variances differ."]
+  },
+  {
+    "id": "mann_whitney_u",
+    "label": "Mann–Whitney U test",
+    "whenToUse": "Compare two independent groups when normality is violated or outcome is ordinal.",
+    "assumptions": [
+      "Independent groups",
+      "Ordinal or continuous outcome",
+      "Similar distribution shapes if interpreted as median difference"
+    ],
+    "whatToReport": [
+      "Group medians and IQRs",
+      "U statistic (and Z if provided) with p-value",
+      "Effect size (e.g., rank-biserial correlation)"
+    ],
+    "resultsTemplate": "A Mann–Whitney U test indicated [no] difference between groups on [outcome], U = X, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "paired_t",
+    "label": "Paired t-test",
+    "whenToUse": "Compare means from two related measurements (e.g., pre/post) when differences are approximately normal.",
+    "assumptions": [
+      "Paired observations",
+      "Continuous outcome",
+      "Approximate normality of pairwise differences"
+    ],
+    "whatToReport": [
+      "Mean difference and SD of differences",
+      "t statistic, df, and p-value",
+      "Confidence interval for paired mean difference"
+    ],
+    "resultsTemplate": "A paired t-test showed a [significant/non-significant] change in [outcome], t(df) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "one_way_anova",
+    "label": "One-way ANOVA",
+    "whenToUse": "Compare means across three or more independent groups when assumptions are met.",
+    "assumptions": [
+      "Continuous outcome",
+      "Independent groups",
+      "Approximate normality in each group",
+      "Homogeneity of variance"
+    ],
+    "whatToReport": [
+      "Group means and SDs",
+      "F statistic with df and p-value",
+      "Post hoc comparisons if significant",
+      "Effect size (e.g., eta-squared or partial eta-squared)"
+    ],
+    "resultsTemplate": "A one-way ANOVA found [a/no] group effect on [outcome], F(df1, df2) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "welch_anova",
+    "label": "Welch ANOVA",
+    "whenToUse": "Compare means across three or more independent groups when variances are unequal.",
+    "assumptions": [
+      "Continuous outcome",
+      "Independent groups",
+      "Approximate normality in groups"
+    ],
+    "whatToReport": [
+      "Group means and SDs",
+      "Welch F statistic with adjusted df and p-value",
+      "Variance-robust post hoc test (e.g., Games-Howell)"
+    ],
+    "resultsTemplate": "A Welch ANOVA indicated [a/no] group difference in [outcome], F_welch(df1, df2) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "kruskal_wallis",
+    "label": "Kruskal–Wallis test",
+    "whenToUse": "Compare three or more independent groups for non-normal or ordinal outcomes.",
+    "assumptions": [
+      "Independent groups",
+      "Ordinal or continuous outcome",
+      "Similar distribution shapes for median interpretation"
+    ],
+    "whatToReport": [
+      "Group medians and IQRs",
+      "H statistic, df, and p-value",
+      "Post hoc pairwise tests with multiplicity correction"
+    ],
+    "resultsTemplate": "A Kruskal–Wallis test showed [a/no] group difference in [outcome], H(df) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "repeated_measures_anova",
+    "label": "Repeated-measures ANOVA",
+    "whenToUse": "Compare means across three or more related conditions/time points under approximate normality.",
+    "assumptions": [
+      "Related/within-subject measurements",
+      "Continuous outcome",
+      "Approximate normality",
+      "Sphericity assumption"
+    ],
+    "whatToReport": [
+      "Condition means and SDs",
+      "F statistic with df and p-value",
+      "Sphericity test and correction (e.g., Greenhouse-Geisser) if violated",
+      "Effect size (partial eta-squared)"
+    ],
+    "resultsTemplate": "A repeated-measures ANOVA found [a/no] effect of condition on [outcome], F(df1, df2) = X.XX, p = .XXX.",
+    "notes": ["Check and report sphericity diagnostics."]
+  },
+  {
+    "id": "friedman",
+    "label": "Friedman test",
+    "whenToUse": "Compare three or more related conditions when normality is not met.",
+    "assumptions": [
+      "Related/blocked measurements",
+      "Ordinal or continuous outcome"
+    ],
+    "whatToReport": [
+      "Condition medians and IQRs",
+      "Friedman chi-square statistic, df, and p-value",
+      "Post hoc pairwise comparisons with correction"
+    ],
+    "resultsTemplate": "A Friedman test showed [a/no] difference across conditions for [outcome], χ²(df) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "chi_square",
+    "label": "Chi-square test",
+    "whenToUse": "Evaluate association or group differences between categorical variables with adequate expected counts.",
+    "assumptions": [
+      "Categorical variables",
+      "Independent observations",
+      "Expected cell counts generally >= 5"
+    ],
+    "whatToReport": [
+      "Contingency table counts/percentages",
+      "Chi-square statistic, df, and p-value",
+      "Effect size (e.g., Cramer's V)"
+    ],
+    "resultsTemplate": "A chi-square test found [an/no] association between [var1] and [var2], χ²(df) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "fishers_exact",
+    "label": "Fisher’s exact test",
+    "whenToUse": "Analyze categorical association for small expected counts, especially in 2x2 tables.",
+    "assumptions": [
+      "Categorical data",
+      "Independent observations",
+      "Most common for 2x2 table"
+    ],
+    "whatToReport": [
+      "Cell counts and percentages",
+      "Exact p-value",
+      "Odds ratio and confidence interval for 2x2 tables"
+    ],
+    "resultsTemplate": "Fisher’s exact test indicated [an/no] association between [var1] and [var2], p = .XXX.",
+    "notes": ["For larger-than-2x2 tables, consider Fisher-Freeman-Halton extension."]
+  },
+  {
+    "id": "mcnemar",
+    "label": "McNemar test",
+    "whenToUse": "Compare paired binary outcomes (e.g., before/after yes/no).",
+    "assumptions": [
+      "Paired binary data",
+      "Focus on discordant pairs"
+    ],
+    "whatToReport": [
+      "2x2 paired table",
+      "McNemar test statistic and p-value",
+      "Exact version if discordant counts are small"
+    ],
+    "resultsTemplate": "A McNemar test showed [a/no] change in paired binary outcomes, χ²(1) = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "pearson_correlation",
+    "label": "Pearson correlation",
+    "whenToUse": "Measure linear association between two continuous approximately normal variables.",
+    "assumptions": [
+      "Continuous variables",
+      "Approximate bivariate normality",
+      "Linear relationship",
+      "No extreme outliers"
+    ],
+    "whatToReport": [
+      "Correlation coefficient r",
+      "Confidence interval for r",
+      "p-value",
+      "Scatterplot summary"
+    ],
+    "resultsTemplate": "Pearson correlation showed [a/no] linear association between [x] and [y], r = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "spearman_correlation",
+    "label": "Spearman rank correlation",
+    "whenToUse": "Measure monotonic association when normality is unclear or data are ordinal/non-normal.",
+    "assumptions": [
+      "Ordinal or continuous variables",
+      "Monotonic relationship"
+    ],
+    "whatToReport": [
+      "Spearman rho",
+      "p-value",
+      "Scatterplot or ranked relationship summary"
+    ],
+    "resultsTemplate": "Spearman correlation indicated [a/no] monotonic association between [x] and [y], ρ = X.XX, p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "linear_regression",
+    "label": "Linear regression",
+    "whenToUse": "Model a continuous outcome using one or more predictors.",
+    "assumptions": [
+      "Linear relationship",
+      "Independent errors",
+      "Homoscedastic residuals",
+      "Residuals approximately normal"
+    ],
+    "whatToReport": [
+      "Regression coefficients (beta), SE, p-values",
+      "95% confidence intervals",
+      "Model fit (R², adjusted R²)",
+      "Key diagnostics"
+    ],
+    "resultsTemplate": "Linear regression indicated that [predictor] was [not] associated with [outcome], β = X.XX (SE = X.XX), p = .XXX.",
+    "notes": []
+  },
+  {
+    "id": "logistic_regression",
+    "label": "Logistic regression",
+    "whenToUse": "Model a categorical outcome (typically binary) from predictors.",
+    "assumptions": [
+      "Binary outcome (or multinomial/ordinal variant as needed)",
+      "Independent observations",
+      "Linearity in the logit for continuous predictors",
+      "Adequate events per predictor"
+    ],
+    "whatToReport": [
+      "Odds ratios with 95% CIs",
+      "Coefficient estimates and p-values",
+      "Model fit/calibration metrics",
+      "Discrimination metric (e.g., AUC for binary)"
+    ],
+    "resultsTemplate": "Logistic regression showed that [predictor] had [no] association with odds of [outcome], OR = X.XX, 95% CI [LL, UL], p = .XXX.",
+    "notes": ["Use binary logistic for two-category outcomes."]
+  },
+  {
+    "id": "poisson_regression",
+    "label": "Poisson regression",
+    "whenToUse": "Model count outcomes as rates/counts with log link.",
+    "assumptions": [
+      "Count outcome",
+      "Independent events",
+      "Mean approximately equals variance (equidispersion)"
+    ],
+    "whatToReport": [
+      "Incidence rate ratios with 95% CIs",
+      "Coefficient estimates and p-values",
+      "Offset term if modeling rates"
+    ],
+    "resultsTemplate": "Poisson regression indicated [predictor] was [not] associated with [count outcome], IRR = X.XX, 95% CI [LL, UL], p = .XXX.",
+    "notes": ["Check overdispersion; consider negative binomial if overdispersion is present."]
+  },
+  {
+    "id": "cox_ph",
+    "label": "Cox proportional hazards model",
+    "whenToUse": "Model time-to-event outcomes with censoring.",
+    "assumptions": [
+      "Time-to-event outcome with censoring",
+      "Proportional hazards assumption",
+      "Independent censoring"
+    ],
+    "whatToReport": [
+      "Hazard ratios with 95% CIs",
+      "Coefficient estimates and p-values",
+      "Number of events and follow-up summary",
+      "PH diagnostics"
+    ],
+    "resultsTemplate": "A Cox model showed [predictor] had [no] association with hazard of [event], HR = X.XX, 95% CI [LL, UL], p = .XXX.",
+    "notes": ["Assess proportional hazards assumption (e.g., Schoenfeld residuals)."]
+  }
+]
